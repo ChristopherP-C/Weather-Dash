@@ -20,7 +20,7 @@ class HistoryService {
   private async read() {
     try {
     const historyData = await fs.readFile(searchHistory, 'utf8');
-    history = JSON.parse(historyData);
+    const history = JSON.parse(historyData);
     return history;
   } catch {
     console.log(`error reading history`);
@@ -41,10 +41,11 @@ class HistoryService {
       return history.map((city: {name: string; id: string}) => new City(city.name, city.id));
     } catch {
       console.log(`error getting cities`);
+      return [];
     };
   };
   // TODO Define an addCity method that adds a city to the searchHistory.json file
-   async addCity(city: string) {
+   async addCity (city: string) {
     try {
     const cities = await this.getCities();
     const newCity = new City(city, uuidv4());
@@ -52,10 +53,10 @@ class HistoryService {
     await this.write(cities)
    } catch {
     console.log(`error adding city`);
-   }
-  // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
-  // async removeCity(id: string) {}
-};
+   };
+  };
+   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
+   // async removeCity(id: string) {}
 };
 
 export default new HistoryService();
