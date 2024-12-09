@@ -14,9 +14,6 @@
 -[License](#license)
 
 
-  ## Installation
-  undefined
-
   ## Usage
   Upon visiting the site, users simply input a city into the input field on the left and hit submit, and they recieve the current and upcoming weather for that city.
 
